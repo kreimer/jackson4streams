@@ -1,0 +1,96 @@
+buildscript {
+    ext {
+        springBootVersion = '2.4.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'maven-publish'
+    id 'application'
+}
+
+
+
+publish.dependsOn build
+
+
+
+group = 'kreimer'
+version = '1.0.0'
+sourceCompatibility = '11'
+
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'kreimer'
+            artifactId = 'jackson4streams'
+            println "Build Version = ${project.version ?: '[none]'}"
+            from components.java
+        }
+    }
+}
+
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.3'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.3'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.3'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.apache.commons:commons-lang3'
+}
+
+
+
+jar {
+    enabled = true
+}
+
+
+
+bootJar {
+    classifier = 'boot'
+}
+
+
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+}
+
+
+
