@@ -9,11 +9,11 @@ Jackson serialization for java.util.stream.Stream
 
 ## Examples
 
-```
+```java
 @Data
 public class MyDto {
 
     protected Stream<Item> items;
 
 }
-```Java
+```
