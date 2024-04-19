@@ -7,7 +7,7 @@ Or deliver equally insane responses.
 Or both.
 You hate ```OutOfMemoryError```.
 Now you have serialization for your dto's  ``` java.util.stream.Stream ``` properties.
-It is aJackson ```ObjectMapper``` Module that once imported and configured will make you (and your app) to breath a bit.
+It is a Jackson ```ObjectMapper``` Module that once imported and configured will make you (and your app) to breath a bit.
 
 ## Installation
 
